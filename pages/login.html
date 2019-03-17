@@ -1,0 +1,67 @@
+<div class="page" data-name="loginhome">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">返回</span>
+                </a>
+            </div>
+            <div class="login-screen-title">登录</div>
+        </div>
+    </div>
+
+
+    <div class="page-content login-screen-content" id="my-login-screen">
+
+        <form>
+            <div class="list">
+                <ul>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Username</div>
+                            <div class="item-input-wrap">
+                                <input type="text" name="username" placeholder="Your username">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">Password</div>
+                            <div class="item-input-wrap">
+                                <input type="password" name="password" placeholder="Your password">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul>
+                    <li> <a href="#" class="item-link list-button login-button" >登录</a></li>
+
+                </ul>
+                <div class="block-footer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p><a href="#" class="link back">Close Login Screen</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<script>
+
+$$('.login-button').on('click', function () {
+  var username = $$('#loginhome [name="username"]').val();
+  var password = $$('#loginhome [name="password"]').val();
+
+  // Close login screen
+  app.loginScreen.close('#loginhome');
+
+  // Alert username and password
+  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+});
+
+
+</script>

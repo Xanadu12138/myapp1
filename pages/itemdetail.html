@@ -1,0 +1,90 @@
+<template>
+    <div class="page" data-name="message1">
+        <div class="navbar1">
+            <div class="navbar-inner  navbar-current" style="background:rgb(71,199,219);height: 100%;">
+                <div class="left">
+                    <a href="#" class="link back" style="bottom:-18px">
+                        <img src="./img/return.png" height="22px" width="22px" style="z-index:99999">
+                    </a>
+                </div>
+                <div class="menu">
+                    <div class="menu-inner">
+                        <div class="moreclose">
+
+                            <div class="menu-item-content" style="display:-moz-box">
+                                <div class="menu-left" id="more">
+                                    <a class="link popover-open" href="#" data-popover=".menu-content"><img src="./img/more.png"
+                                            height="22px" width="22px" style="margin-top:-2px;margin-right:8px;margin-left:5px"
+                                            id="more1"></img></a>
+                                </div>
+                                <div class="menu-right">
+                                    <a href="#" class="link back"><img src="./img/close.png" height="22px" width="22px"
+                                            style="margin-top:-2px"></img></a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page-content" style="padding-top:0px;background: rgb(240,249,251)">
+            <div class="popover menu-content" style="float:right;background: white;margin-right:19px;margin-top:5px;height:113px;width: 138px;display: none"
+                id="menu-content">
+                <ul style="list-style:none;margin: 0 auto;padding-left:0;">
+                    <li style="margin-top:9px;width: 138px;border-bottom: 1px solid #EBEBEB;position: relative;" id="like"
+                        @click="like">
+                        <img src="./img/like.png" height="25px" width="25px" style="position:absolute;top:0px;left:16px"></img>
+                        <span style="color:#3E3E3E;font-size:20px; margin-left: 61px; ">收藏</span>
+                    </li>
+                    <li style="margin-top:9px;width: 138px;border-bottom: 1px solid #EBEBEB;position: relative;">
+                        <img src="./img/share(more).png" height="25px" width="25px" style="position:absolute;top:0px;left:16px"></img>
+                        <span style="color:#3E3E3E;font-size:20px; margin-left: 61px; ">分享</span>
+                    </li>
+                    <li style="margin-top:9px;width: 138px;position: relative;">
+                        <img src="./img/load.png" height="25px" width="25px" style="position:absolute;top:0px;left:16px"></img>
+                        <span style="color:#3E3E3E;font-size:20px; margin-left: 61px; ">加载</span>
+                    </li>
+
+                </ul>
+            </div>
+            <p>{{news.post_title}}</p>
+            <p>{{news.author_name}}</p>
+            <p>{{news.post_content}}</p>
+            <input style="display:none"  id="ID" value="{{news.ID}}"></input>
+            <img src="{{news.thumnail}}">
+
+        </div>
+    </div>
+</template>
+<script>
+    return {
+
+        methods: {
+            
+            like: function () {
+                //var $$= Dom7;
+                
+                var postID=document.getElementById("ID").value;
+                //alert(postID);
+                app.request.post('http://132.232.57.130:8505/wp-json/tokennews/v1/favorite', {
+                    
+                    post_id: postID,
+                    caedNO: '214198'
+                }, function (data) {
+                    var datajason=JSON.parse(data);
+                    alert(datajason.msg);
+                });
+
+            },
+        }
+
+
+
+    }
+</script>
