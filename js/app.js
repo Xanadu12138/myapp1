@@ -61,7 +61,7 @@ var template_card = document.getElementById('show_card').innerHTML; //媒体新�
 var compiledTemplate_card = Template7(template_card).compile();
 app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
   id: 10,
-  offset: 1,
+  offset: 1,//待解决
   length: 6
 }, function (data) {
   var card_data = JSON.parse(data);
@@ -75,8 +75,6 @@ var template_notice = document.getElementById("new-notice").innerHTML;
 var compiledTemplate_notice = Template7(template_notice).compile();
 app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
   id:7,
-  offset:5,
-  length:6,
 },
 function (data) {
   var notice_data = JSON.parse(data);
