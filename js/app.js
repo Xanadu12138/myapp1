@@ -36,21 +36,21 @@ Template7.registerHelper('formatDate', function (date) {
 
 
 
-  app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
-    function (data) {
-      var re_data = JSON.parse(data);
-      console.log(re_data);
-      var template_re = document.getElementById("show-template").innerHTML; //
-      var compiledTemplate_re = Template7(template_re).compile();
-      var html_re = compiledTemplate_re(re_data);
-      document.getElementById('content-wrap').innerHTML = html_re;
-    });
+app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
+  function (data) {
+    var re_data = JSON.parse(data);
+    console.log(re_data);
+    var template_re = document.getElementById("show-template").innerHTML; //
+    var compiledTemplate_re = Template7(template_re).compile();
+    var html_re = compiledTemplate_re(re_data);
+    document.getElementById('content-wrap').innerHTML = html_re;
+  });
 
 var template_card = document.getElementById('show_card').innerHTML; //媒体新闻
 var compiledTemplate_card = Template7(template_card).compile();
 app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
   id: 10,
-  offset: 1,//待解决
+  offset: 1, //待解决
   length: 6
 }, function (data) {
   var card_data = JSON.parse(data);

@@ -56,7 +56,7 @@
             <p>{{news.post_title}}</p>
             <p>{{news.author_name}}</p>
             <p>{{news.post_content}}</p>
-            <input style="display:none"  id="ID" value="{{news.ID}}"></input>
+            <input style="display:none" id="ID" value="{{news.ID}}"></input>
             <img src="{{news.thumnail}}">
 
         </div>
@@ -66,60 +66,60 @@
     return {
 
         methods: {
-            
+
             like: function () {
                 //var $$= Dom7;
-                var json_msign={ 
-  "avatar": {
-    "id": 214198, 
-    "url": "http://static.wutnews.net/avatar/214198.jpg"
-}, 
-"birthday": 761587200000, 
-"dept": {
-    "code": "", 
-    "name": "计算机科学与技术学院"
-}, 
-"enterYear": 0, 
-"gender": 0, 
-"idsNo": "0121210680206",
-"cardNo": "214198",
-"mobile": "18202760516",
-"email": "crazyurus@whut.edu.cn",
-"type": "本科生",
-"major": {
-    "code": "", 
-    "name": "软件卓越工程师"
-}, 
-"nickName": "Crazy_Urus", 
-"qq": "710161378", 
-"realName": "廖星", 
-"sign": {
-    "appKey": "9607093555", 
-    "check": "651f604f0664e7d16bc5eca95da2e31fffccc2cb", 
-    "nonce": "A8n1NA8yabcdefgh", 
-    "timestamp": 1465047026006, 
-    "token": "46f93c3175343c99aad4526fda62aa3820d44b86"
-}
-}
-var str_msign=JSON.stringify(json_msign);
-var encoded_msign=encodeURIComponent(str_msign);
-console.log(encoded_msign);
-console.log(json_msign);
+                var json_msign = {
+                    "avatar": {
+                        "id": 214198,
+                        "url": "http://static.wutnews.net/avatar/214198.jpg"
+                    },
+                    "birthday": 761587200000,
+                    "dept": {
+                        "code": "",
+                        "name": "计算机科学与技术学院"
+                    },
+                    "enterYear": 0,
+                    "gender": 0,
+                    "idsNo": "0121210680206",
+                    "cardNo": "214198",
+                    "mobile": "18202760516",
+                    "email": "crazyurus@whut.edu.cn",
+                    "type": "本科生",
+                    "major": {
+                        "code": "",
+                        "name": "软件卓越工程师"
+                    },
+                    "nickName": "Crazy_Urus",
+                    "qq": "710161378",
+                    "realName": "廖星",
+                    "sign": {
+                        "appKey": "9607093555",
+                        "check": "651f604f0664e7d16bc5eca95da2e31fffccc2cb",
+                        "nonce": "A8n1NA8yabcdefgh",
+                        "timestamp": 1465047026006,
+                        "token": "46f93c3175343c99aad4526fda62aa3820d44b86"
+                    }
+                }
+                var str_msign = JSON.stringify(json_msign);
+                var encoded_msign = encodeURIComponent(str_msign);
+                console.log(encoded_msign);
+                console.log(json_msign);
 /*
-Framework7.request.setup({
-  headers:{
-    'M-SIGN':encoded_msign,
-  }
-})*/
-                var postID=document.getElementById("ID").value;
+                Framework7.request.setup({
+                    headers: {
+                        'M_SIGN': encoded_msign,
+                    }
+                });*/
+                var postID = document.getElementById("ID").value;
                 //alert(postID);
                 app.request.post('http://132.232.57.130:8505/wp-json/tokennews/v1/favorite', {
-                    
+
                     post_id: postID,
                     caedNO: '214198'
                 }, function (data) {
-                    var datajason=JSON.parse(data);
-                    alert(datajason.msg);
+                    var datajason = JSON.parse(data);
+                    //alert(datajason.msg);
                 });
 
             },
