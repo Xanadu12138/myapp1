@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="theme-color" content="#FFFFFF">
+    <meta name="theme" content="#FFFFFF">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <title>My App</title>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/demo.css">
-    
+
 </head>
 
 <body>
@@ -31,8 +31,8 @@
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main safe-areas">
             <!-- Initial Page, "data-name" contains page name -->
-            <div class="page" data-name="home">
-                <div class="toolbar toolbar-bottom"></div>
+            <div class="page-content" id="1" data-name="home">
+                
                 <!-- Top Navbar -->
 
                 <div class="navbar">
@@ -56,16 +56,16 @@
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-                <div class="toolbar tabbar">
+                <div class="toolbar tabbar" id="menu">
                     <div class="toolbar-inner">
                         <a href="#tab-1" class="tab-link tab-link-active">媒体推文</a>
                         <a href="#tab-2" class="tab-link">最新通知</a>
                         <a href="#tab-3" class="tab-link">我的收藏</a>
                     </div>
                 </div>
-                <div class="tabs-animated-wrap">
+                <div class="tabs-animated-wrap" id="content">
                     <div class="tabs" id="tabs">
-                        <div id="tab-1" class="page-content tab tab-active">
+                        <div id="tab-1" class="tab tab-active">
 
                             <div class="card" style="box-shadow:none">
 
@@ -109,7 +109,7 @@
                         </div>
 
 
-                        <div id="tab-2" class="page-content tab">
+                        <div id="tab-2" class="tab">
 
 
 
@@ -132,7 +132,7 @@
 
 
                         </div>
-                        <div id="tab-3" class="page-content tab">
+                        <div id="tab-3" class="tab">
 
                             <div class="card">
                                 <div class="card-content">
@@ -175,7 +175,7 @@
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            
+
         });
     </script>
 
