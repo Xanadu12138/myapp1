@@ -74,7 +74,10 @@ app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
   });
 var template_like = document.getElementById("new-like").innerHTML; //收藏
 var compiledTemplate_like = Template7(template_like).compile();
-  var html_like = compiledTemplate_notice(data);
+app.request.json('http://132.232.57.130:8505/wp-json/tokennews/v1/favorite',{
+  cardNo:'21498'
+},function(data){
+var html_like = compiledTemplate_notice(data);
   document.getElementById("tab-3").innerHTML = html_like;
 
 });
