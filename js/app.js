@@ -19,6 +19,7 @@ var app = new Framework7({
 // Helper to format dates
 
 
+
 var mainView = app.views.create('.view-main');
 Template7.registerHelper('formatDate', function (date) {
   var months = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
@@ -32,36 +33,24 @@ Template7.registerHelper('formatDate', function (date) {
   m = m < 10 ? '0' + m : m;
   return year + "-" + month + "-" + day;
 });
-var template = document.getElementById('show-template').innerHTML;
-var compiledTemplate = Template7(template).compile();
-var jsonData = {
-  goods1: [{
-      background: "http://img02.liwushuo.com/image/181204/wjpg1yhxp.jpg",
-      title: "秋冬凹造型，不能少了这几款气质爆灯的单鞋！"
-    },
-    {
-      background: "http://img01.liwushuo.com/image/181204/1rkjvn1sk.jpg",
-      title: "十款红红火火开运单品，本命年没有在怕的！"
-    },
-    {
-      background: "http://img03.liwushuo.com/image/190127/71pefy643.jpg",
-      title: "每逢新年，家家户户都要办年货鞋！"
-    },
-    {
-      background: "http://img03.liwushuo.com/image/190125/c07ctzm65.jpg",
-      title: "200元也能送出新意，就看这些创意情人节礼物"
-    },
-  ]
-};
 
-var html = compiledTemplate(jsonData);
-document.getElementById('content-wrap').innerHTML = html;
+
+
+app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
+  function (data) {
+    var re_data = JSON.parse(data);
+    console.log(re_data);
+    var template_re = document.getElementById("show-template").innerHTML; //
+    var compiledTemplate_re = Template7(template_re).compile();
+    var html_re = compiledTemplate_re(re_data);
+    document.getElementById('content-wrap').innerHTML = html_re;
+  });
 
 var template_card = document.getElementById('show_card').innerHTML; //媒体新闻
 var compiledTemplate_card = Template7(template_card).compile();
 app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
   id: 10,
-  offset: 1,
+  offset: 1, //待解决
   length: 6
 }, function (data) {
   var card_data = JSON.parse(data);
@@ -71,24 +60,20 @@ app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
   document.getElementById('card_good').innerHTML = html_card;
 
 });
-var template_notice = document.getElementById("new-notice").innerHTML;
+var template_notice = document.getElementById("new-notice").innerHTML; //最新通知
 var compiledTemplate_notice = Template7(template_notice).compile();
 app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/cat', {
-  id:7,
-  offset:5,
-  length:6,
-},
-function (data) {
-  var notice_data = JSON.parse(data);
-  console.log(notice_data);
-  var html_notice = compiledTemplate_notice(notice_data);
-  document.getElementById("tab-2").innerHTML = html_notice;
+    id: 7,
+  },
+  function (data) {
+    var notice_data = JSON.parse(data);
+    console.log(notice_data);
+    var html_notice = compiledTemplate_notice(notice_data);
+    document.getElementById("tab-2").innerHTML = html_notice;
 
-});
-var template_like = document.getElementById("new-like").innerHTML;
+  });
+var template_like = document.getElementById("new-like").innerHTML; //收藏
 var compiledTemplate_like = Template7(template_like).compile();
-app.request.json('http://132.232.57.130:8505/wp-json/tokennews/v1/favorite', {cardNo:'214198'},function (data) {
-  console.log(data);
   var html_like = compiledTemplate_notice(data);
   document.getElementById("tab-3").innerHTML = html_like;
 
