@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme" content="#FFFFFF">
@@ -31,49 +33,52 @@
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main safe-areas">
             <!-- Initial Page, "data-name" contains page name -->
-            <div class="page-content" id="1" data-name="home">
-                
-                <!-- Top Navbar -->
+            <div class="page"  data-name="home">
+                <div class="page-content" id="1">
 
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="title silding " style="color: #3E3E3E;font-size:20px;font-family: PingFangSC-Regular, sans-serif;">资讯</div>
+                    <!-- Top Navbar -->
+
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title silding "
+                                style="color: #3E3E3E;font-size:20px;font-family: PingFangSC-Regular, sans-serif;">资讯
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div data-space-between="1" data-slides-per-view="auto" data-centered-slides="true" class="swiper-container swiper-init demo-swiper demo-swiper-auto"
-                    data-autoplay="true">
+                    <div data-space-between="1" data-slides-per-view="auto" data-centered-slides="true"
+                        class="swiper-container swiper-init demo-swiper demo-swiper-auto" data-autoplay="true">
 
-                    <div class="swiper-wrapper" id="content-wrap">
-                        <script type="text/template" id="show-template">
-                            {{#each data reverse="true"}} 
+                        <div class="swiper-wrapper" id="content-wrap">
+                            <script type="text/template" id="show-template">
+                                {{#each data reverse="true"}} 
                                 <div class="swiper-slide">
                                  <img  src="{{slideshow_img}}"  height="100%" width="100%">
                                  <span class="bottom-span">"{{post_title}}"</span>
                                 </div>
                                {{/each}}
                         </script>
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="toolbar tabbar" id="menu">
-                    <div class="toolbar-inner">
-                        <a href="#tab-1" class="tab-link tab-link-active">媒体推文</a>
-                        <a href="#tab-2" class="tab-link">最新通知</a>
-                        <a href="#tab-3" class="tab-link">我的收藏</a>
+                    <div class="toolbar tabbar" id="menu">
+                        <div class="toolbar-inner" >
+                            <a href="#tab-1" class="tab-link tab-link-active" style="display:flex">媒体推文</a>
+                            <a href="#tab-2" class="tab-link" style="display:flex">最新通知</a>
+                            <a href="#tab-3" class="tab-link" style="display:flex">我的收藏</a>
+                        </div>
                     </div>
-                </div>
-                <div class="tabs-animated-wrap" id="content">
-                    <div class="tabs" id="tabs">
-                        <div id="tab-1" class="tab tab-active">
+                    <div class="tabs-animated-wrap" id="content">
+                        <div class="tabs" id="tabs">
+                            <div id="tab-1" class="tab tab-active">
 
-                            <div class="card" style="box-shadow:none">
+                                <div class="card" style="box-shadow:none">
 
-                                <div class="card-content">
-                                    <div class="list media-list" id="card_good">
-                                        <ul>
-                                            <script type="text/template" id="show_card">
-                                                {{#each data reverse="true"}} 
+                                    <div class="card-content">
+                                        <div class="list media-list" id="card_good">
+                                            <ul>
+                                                <script type="text/template" id="show_card">
+                                                    {{#each data reverse="true"}} 
                                                 <li class="item-content" style="height: 120px;border-bottom:1px solid #EBEBEB"> 
                                                     <div class="item-media" style="height:100%;width:30%;object-fit:cover">
                                                         <img  style="margin-top:5px" src="{{thumnail}}"   width="100%"  height="100%"/>
@@ -101,52 +106,53 @@
                                                 </li>
                                                 {{/each}}
                                             </script>
-                                        </ul>
-                                    </div>
+                                            </ul>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <div id="tab-2" class="tab">
+                            <div id="tab-2" class="tab">
 
 
 
 
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="list links-list">
-                                        <script type="text/template" id="new-notice">
-                                            {{#each data reverse="true"}}
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="list links-list">
+                                            <script type="text/template" id="new-notice">
+                                                {{#each data reverse="true"}}
                                             <ul style="list-style: none;background:white;border-bottom:1px solid #EBEBEB;margin:0px auto;padding-inline-start: 20px;text-indent: 18px;height:75px;position:relative">
                                                 <li><a href="/about/{{noticesId}}/" style="color:#3E3E3E;font-family:PingFangSC-Regular, sans-serif;font-size:18px;top:16px;position:absolute">{{post_title}}</a><div style="float:right;color:#A5A5A5;font-size:15px;margin-right:10px;margin-top:45px";>{{formatDate post_time*1000}}</div></li>
                                             </ul>
                                             {{/each}}
                                         </script>
+                                        </div>
                                     </div>
+
                                 </div>
 
+
+
                             </div>
+                            <div id="tab-3" class="tab">
 
-
-
-                        </div>
-                        <div id="tab-3" class="tab">
-
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="list links-list">
-                                        <script type="text/template" id="new-like">
-                                            {{#each data reverse="true"}}
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="list links-list">
+                                            <script type="text/template" id="new-like">
+                                                {{#each data reverse="true"}}
                                                     <ul style="list-style: none;background:white;border-bottom:1px solid #EBEBEB;margin:0px auto;padding-inline-start: 20px;text-indent: 18px;height:75px;position:relative">
                                                         <li><a href="/about/{{noticesId}}/" style="color:#3E3E3E;font-family:PingFangSC-Regular, sans-serif;font-size:18px;top:16px;position:absolute">{{post_title}}</a><div style="float:right;color:#A5A5A5;font-size:15px;margin-right:10px;margin-top:45px";>{{date}}</div></li>
                                                     </ul>
                                                     {{/each}}
                                                 </script>
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>

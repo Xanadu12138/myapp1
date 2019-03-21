@@ -7,7 +7,7 @@ var app = new Framework7({
   name: 'My App',
   // App id
   id: 'com.myapp.test',
-  theme: 'md', // Automatic theme detection
+  theme: 'ios', // Automatic theme detection
   // Enable swipe panel
   panel: {
     swipe: 'left',
@@ -63,7 +63,7 @@ var jsonData = {
     var tabheight=obj.offsetHeight;
     var card_content=document.getElementById("tab-1");
     var cardgood=document.getElementById("card_good");
-    var cardheight=cardgood.offsetHeight;
+    //var cardheight=cardgood.offsetHeight;
     var obj1=document.getElementById("1");
     var objheight=cardgood.offsetHeight;
     console.log(objheight);

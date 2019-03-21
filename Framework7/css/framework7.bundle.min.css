@@ -1263,14 +1263,18 @@ html.device-full-viewport body {
 
 .link,
 .tab-link {
-    display: inline-flex;
+    display: -webkit-box;
     align-items: center;
     align-content: center;
     justify-content: center;
     position: relative;
     box-sizing: border-box;
     transform: translate3d(0, 0, 0);
-    z-index: 1
+    z-index: 1;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .link i+i,
