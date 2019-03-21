@@ -56,18 +56,43 @@ var jsonData = {
   var content=document.getElementById("content");
   var obj = document.getElementById("menu");
   var _getHeight = obj.offsetTop;
-  //console.log(_getHeight);
+  var card_content=document.getElementById("tab-1");
+  var card_content2=document.getElementById("tab-2");
+  var card_content3=document.getElementById("tab-3");
+  var cardgood=document.getElementById("card_good");
+  var tab1=document.getElementById("tab1");
+  var tab2=document.getElementById("tab2");
+  var tab3=document.getElementById("tab3");
+ /* tab1.onmousedown=function(){
+    //var card=document.getElementById("card");
+    card_content.style.setProperty('display','block');
+    //var card2=document.getElementById("card2");
+    card_content2.style.setProperty('display','none');
+    //var card3=document.getElementById("card3");
+    //card3.style.setProperty('display','none');
+  }
+  tab2.onmousedown=function(){
+    var card2=document.getElementById("card2");
+    card_content2.style.setProperty('display','block');
+    var card=document.getElementById("card");
+    card_content.style.setProperty('display','none');
+    //var card3=document.getElementById("card3");
+    //card3.style.setProperty('display','none');
+  }*/
+  
+  
   var obj1=document.getElementById("1");
   obj1.onscroll = function() {
     var obj=document.getElementById("menu");
     var tabheight=obj.offsetHeight;
-    var card_content=document.getElementById("tab-1");
-    var cardgood=document.getElementById("card_good");
+    
     //var cardheight=cardgood.offsetHeight;
     var obj1=document.getElementById("1");
     var objheight=cardgood.offsetHeight;
-    console.log(objheight);
-    content.style.setProperty('height',objheight+50+"px");
+  console.log(objheight);
+  content.style.setProperty('height',objheight+70+"px");
+    //console.log(objheight);
+    //content.style.setProperty('height',objheight+70+"px");
     //console.log(_getHeight);
     //console.log(tabheight);
     var scrollTop = document.documentElement.scrollTop || obj1.scrollTop;
@@ -75,12 +100,16 @@ var jsonData = {
     if (scrollTop < _getHeight) {
       obj.style.setProperty('position', 'relative');
       card_content.style.setProperty('margin-top',"0px");
+      card_content2.style.setProperty('margin-top',"0px");
+      card_content3.style.setProperty('margin-top',"0px");
   } else {
       obj.style.setProperty('position', 'fixed');
       obj.style.setProperty('top', '0');
       
       //console.log(card_content);
-      card_content.style.setProperty('margin-top',tabheight+"px");
+      card_content.style.setProperty('margin-top',tabheight+20+"px");
+      card_content2.style.setProperty('margin-top',tabheight+20+"px");
+      card_content3.style.setProperty('margin-top',tabheight+20+"px");
 
   }
   }
