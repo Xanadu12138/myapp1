@@ -5,6 +5,7 @@ var app = new Framework7({
   root: '#app',
   // App Name
   name: 'My App',
+
   // App id
   id: 'com.myapp.test',
   theme: 'auto', // Automatic theme detection
@@ -34,17 +35,20 @@ Template7.registerHelper('formatDate', function (date) {
   return year + "-" + month + "-" + day;
 });
 
-
+var jsonData;
+var template_re = document.getElementById("show-template").innerHTML; //
+var compiledTemplate_re = Template7(template_re).compile();
 
 app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
   function (data) {
-    var re_data = JSON.parse(data);
-    console.log(re_data);
-    var template_re = document.getElementById("show-template").innerHTML; //
-    var compiledTemplate_re = Template7(template_re).compile();
-    var html_re = compiledTemplate_re(re_data);
-    document.getElementById('content-wrap').innerHTML = html_re;
+    jsonData = JSON.parse(data);
+    console.log(jsonData);
+    var html_re = compiledTemplate_re(jsonData);
+    document.getElementById('content-wrap').innerHTML = html_re; 
   });
+
+ 
+
 
 var template_card = document.getElementById('show_card').innerHTML; //媒体新闻
 var compiledTemplate_card = Template7(template_card).compile();
