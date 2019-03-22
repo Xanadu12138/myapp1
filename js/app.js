@@ -9,6 +9,7 @@ var app = new Framework7({
   id: 'com.myapp.test',
   theme: 'auto', // Automatic theme detection
   // Enable swipe panel
+  allowInfinite:true,
   panel: {
     swipe: 'left',
   },
@@ -35,16 +36,39 @@ Template7.registerHelper('formatDate', function (date) {
 });
 
 
+/*
+ $$(document).on('page:init', function (e) { 
+  var template_re = document.getElementById("show-template").innerHTML; //
+  var compiledTemplate_re = Template7(template_re).compile();
+  self=this;   
+  app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
 
-app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
   function (data) {
-    var re_data = JSON.parse(data);
+
+    self.$setState({
+      data:JSON.parse(data),
+    });
+     re_data=JSON.parse(data);
+    
     console.log(re_data);
-    var template_re = document.getElementById("show-template").innerHTML; //
-    var compiledTemplate_re = Template7(template_re).compile();
     var html_re = compiledTemplate_re(re_data);
     document.getElementById('content-wrap').innerHTML = html_re;
   });
+});
+*/
+var template_re = document.getElementById("show-template").innerHTML; //
+var compiledTemplate_re = Template7(template_re).compile();
+var self=this;
+app.request.get('http://132.232.57.130:8505/wp-json/tokennews/v1/recommended',
+  success=function(data)  {
+  re_data=JSON.parse(data);
+  console.log(re_data);
+  var html_re = compiledTemplate_re(re_data);
+  document.getElementById('content-wrap').innerHTML = html_re;
+}
+);
+
+
 
 var template_card = document.getElementById('show_card').innerHTML; //媒体新闻
 var compiledTemplate_card = Template7(template_card).compile();
