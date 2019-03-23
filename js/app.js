@@ -31,6 +31,7 @@ Template7.registerHelper('formatDate', function (date) {
   var m = _date.getMinutes();
   m = m < 10 ? '0' + m : m;
   return year + "-" + month + "-" + day;
+  //
 });
 var template = document.getElementById('show-template').innerHTML;
 var compiledTemplate = Template7(template).compile();
