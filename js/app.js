@@ -64,6 +64,10 @@ var compiledTemplate = Template7(template).compile();
   
   
   var obj1=document.getElementById("1");
+  var tab1height;
+  var tab2height;
+  var tab3height;
+  var tabtype;
   obj1.onscroll = function() {
     var obj=document.getElementById("menu");
     var tabheight=obj.offsetHeight;
@@ -71,7 +75,7 @@ var compiledTemplate = Template7(template).compile();
     //var cardheight=cardgood.offsetHeight;
     var obj1=document.getElementById("1");
     var objheight=cardgood.offsetHeight;
-  console.log(objheight);
+  //console.log(objheight);
   content.style.setProperty('height',objheight+70+"px");
     //console.log(objheight);
     //content.style.setProperty('height',objheight+70+"px");
@@ -92,9 +96,17 @@ var compiledTemplate = Template7(template).compile();
       card_content.style.setProperty('margin-top',tabheight+20+"px");
       card_content2.style.setProperty('margin-top',tabheight+20+"px");
       card_content3.style.setProperty('margin-top',tabheight+20+"px");
+      var obj1height=obj1.scrollTop;//获取当前高度
+
+      console.log(obj1height);
 
   }
   }
+  /*$$(".tab-link").on('click',function(){//设置高度
+    var self=this;
+    var type=self.getAttribute("id");
+    console.log(type);
+  })*/
 
 
 var template_re = document.getElementById("show-template").innerHTML; //
