@@ -105,12 +105,12 @@
                 var encoded_msign = encodeURIComponent(str_msign);
                 console.log(encoded_msign);
                 console.log(str_msign);
-/*
+
                 Framework7.request.setup({
                     headers: {
-                        'M_SIGN': encoded_msign,
+                        'M-SIGN': encoded_msign,
                     }
-                });*/
+                });
                 var postID = document.getElementById("ID").value;
                 //alert(postID);
                 app.request.post('http://132.232.57.130:8505/wp-json/tokennews/v1/favorite', {
